@@ -13,6 +13,21 @@ from config import GITHUB_API_BASE_URL, HEADERS, GITHUB_USERNAME, TEST_REPO_NAME
 
 
 def test_delete_repository():
+
+    """Check if a GitHub repository exists."""
+    url = f"{GITHUB_API_BASE_URL}/repos/{GITHUB_USERNAME}/{TEST_REPO_NAME}"
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        print(f"✅ Repository '{TEST_REPO_NAME}' exists.")
+        return True
+    elif response.status_code == 404:
+        print(f"⚠️ Repository '{TEST_REPO_NAME}' does not exist.")
+        return False
+    else:
+        raise Exception(
+            f"❌ Failed to check repository existence. Status: {response.status_code}, Response: {response.json()}")
+
     """Delete the test repository using GitHub API."""
     url = f"{GITHUB_API_BASE_URL}/repos/{GITHUB_USERNAME}/{TEST_REPO_NAME}"
 

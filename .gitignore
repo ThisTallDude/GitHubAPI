@@ -169,3 +169,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignore environment variables and GitHub session files
+.env
+github_session.json
+github_cookies.json
+allure-results/
+test_logs.log

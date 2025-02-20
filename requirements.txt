@@ -3,3 +3,5 @@ requests
 python-dotenv
 selenium
 playwright
+pytest-xdist
+allure-pytest
